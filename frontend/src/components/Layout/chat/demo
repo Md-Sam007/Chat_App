@@ -1,0 +1,30 @@
+ <div className=" h-screen lg:h-[100%] w-full pt-14 lg:pt-1 bg-[url(https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/pattern-3.svg)] bg-opacity-70 bg-center bg-cover bg-no-repeat ">
+
+                
+                <Chats key="101" img={img} name={targetedId}/>
+                <div className="flex flex-col h-[75vh] overflow-scroll no-scrollbar w-full ">
+                    {
+                        messages.filter(val=>val.senderId===targetedId||val.reciverId===targetedId).map((val,index)=>{
+                            return(
+                                <Messages key={index} text={val.text} sender={val.senderId} name={name}/>
+
+                            )
+                        })
+                    }
+                </div>
+                
+                <Send send={(send)=>{
+                    setmessage((prev) => ([
+                        ...prev,{text:send,senderId:name,timestap:Date.now(),reciverId:targetedId}
+
+                    ]))
+                    {
+                    if(socketRef){
+                        
+                       socketRef.current.emit("targetedMessage",{targetedId:targetedId,text:send,sender:name});
+                    }}
+                }
+            }/>
+
+            </div>
+            
