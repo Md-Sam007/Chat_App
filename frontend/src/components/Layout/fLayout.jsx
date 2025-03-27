@@ -17,7 +17,7 @@ export default function Flayout() {
     const [members, setmembers] = useState();
     const [messagesCache, setMessagesCache] = useState({});
 
-    /*  useEffect(()=>{
+     useEffect(()=>{
               const fun=async ()=>{
                   try {
                       const result=await fetch(`${url}/members`,{method:"GET",})
@@ -32,7 +32,7 @@ export default function Flayout() {
   
               }
               fun();
-      },[]);*/
+      },[]);
 
 
     useEffect(() => {
